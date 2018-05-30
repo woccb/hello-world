@@ -1,0 +1,23 @@
+dhcp 的安装和配置文件
+
+install： yum  - y  install dhcp
+
+modify ：
+
+vim  /etc/dhcp/dhcpd.conf
+
+ddns-update-style none;
+ignore client-updates;
+subnet 10.0.0.0 netmask 255.0.0.0 {
+range 10.0.0.100 10.0.0.200;
+option domain-name-servers 202.96.209.133,116.228.111.18;
+option routers 10.0.0.1;
+default-lease-time 600;
+max-lease-time 7200;
+}
+
+start：service dhcpd  start
+
+prepare：ifconfig  eth0 10.0.0.1 NETMASK 255.0.0.0
+
+ 
